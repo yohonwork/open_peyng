@@ -48,3 +48,16 @@ def put_mapping(method, path):
         return func
 
     return decorator
+
+def delete_mapping(method, path):
+    if method is None:
+        method = "DELETE"
+    elif method != "DELETE":
+        raise ValueError
+
+    def decorator(func):
+        func._api_method = method
+        func._api_path   = path
+        return func
+
+    return decorator

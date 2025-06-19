@@ -21,5 +21,7 @@ def invoke_request(method, path, base_url, args: dict):
         return requests.post(url, json=body).json()
     elif method == "PUT":
         return requests.put(url)
+    elif method == "DELETE":
+        return requests.delete(url)
     else:
         raise NotImplementedError(f"{method} not implemented")
