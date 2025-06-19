@@ -19,6 +19,18 @@ def api_mapping(method, path):
 def get_mapping(method, path):
     if method is None:
         method = "GET"
+
+    def decorator(func):
+        func._api_method = method
+        func._api_path   = path
+        return func
+
+    return decorator
+
+def post_mapping(method, path):
+    if method is None:
+        method = "POST"
+
     def decorator(func):
         func._api_method = method
         func._api_path   = path
