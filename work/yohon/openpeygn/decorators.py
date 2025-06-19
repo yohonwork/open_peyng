@@ -37,3 +37,14 @@ def post_mapping(method, path):
         return func
 
     return decorator
+
+def put_mapping(method, path):
+    if method is None:
+        method = "PUT"
+
+    def decorator(func):
+        func._api_method = method
+        func._api_path   = path
+        return func
+
+    return decorator
